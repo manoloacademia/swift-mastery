@@ -1,0 +1,141 @@
+swift-mastery/
+│
+├── 📁 00-setup/
+│   ├── configuracion-xcode.md
+│   ├── configuracion-claude-code.md
+│   └── recursos-esenciales.md
+│
+├── 📁 01-fundamentos-swift/
+│   ├── 📁 teoria/
+│   │   ├── 01-sintaxis-basica/
+│   │   ├── 02-tipos-y-colecciones/
+│   │   ├── 03-control-de-flujo/
+│   │   ├── 04-funciones-y-closures/
+│   │   ├── 05-optionals/
+│   │   ├── 06-structs-y-classes/
+│   │   ├── 07-protocolos/
+│   │   ├── 08-generics/
+│   │   ├── 09-manejo-errores/
+│   │   └── 10-concurrencia-async-await/
+│   │
+│   ├── 📁 ejercicios/
+│   │   ├── 📁 generados/          # Haiku genera aquí
+│   │   ├── 📁 resueltos/          # Tu código
+│   │   └── 📁 revisados/          # Con feedback
+│   │
+│   └── 📁 mini-proyectos/
+│       ├── calculadora-cli/
+│       ├── gestor-tareas-cli/
+│       └── analizador-texto/
+│
+├── 📁 02-swiftui/
+│   ├── 📁 teoria/
+│   │   ├── 01-vistas-basicas/
+│   │   ├── 02-layout-stacks/
+│   │   ├── 03-state-binding/
+│   │   ├── 04-listas-navegacion/
+│   │   ├── 05-formularios-inputs/
+│   │   ├── 06-animaciones/
+│   │   ├── 07-gestos/
+│   │   ├── 08-environment/
+│   │   └── 09-custom-views/
+│   │
+│   ├── 📁 ejercicios/
+│   └── 📁 proyectos/
+│       ├── app-contador/
+│       ├── lista-compras/
+│       ├── galeria-fotos/
+│       └── clima-app/
+│
+├── 📁 03-uikit/
+│   ├── 📁 teoria/
+│   │   ├── 01-viewcontrollers/
+│   │   ├── 02-autolayout/
+│   │   ├── 03-tableviews/
+│   │   ├── 04-collectionviews/
+│   │   ├── 05-navegacion/
+│   │   └── 06-integracion-swiftui/
+│   │
+│   └── 📁 proyectos/
+│
+├── 📁 04-arquitectura/
+│   ├── 📁 teoria/
+│   │   ├── 01-mvc/
+│   │   ├── 02-mvvm/
+│   │   ├── 03-clean-architecture/
+│   │   ├── 04-coordinator-pattern/
+│   │   └── 05-dependency-injection/
+│   │
+│   └── 📁 refactoring-exercises/
+│
+├── 📁 05-datos-y-persistencia/
+│   ├── 📁 teoria/
+│   │   ├── 01-userdefaults/
+│   │   ├── 02-file-system/
+│   │   ├── 03-codable-json/
+│   │   ├── 04-core-data/
+│   │   ├── 05-swiftdata/
+│   │   ├── 06-keychain/
+│   │   └── 07-cloudkit/
+│   │
+│   └── 📁 proyectos/
+│
+├── 📁 06-networking/
+│   ├── 📁 teoria/
+│   │   ├── 01-urlsession/
+│   │   ├── 02-async-await-networking/
+│   │   ├── 03-rest-apis/
+│   │   ├── 04-websockets/
+│   │   └── 05-network-layer-design/
+│   │
+│   └── 📁 proyectos/
+│
+├── 📁 07-frameworks-apple/
+│   ├── 📁 combine/
+│   ├── 📁 core-location/
+│   ├── 📁 mapkit/
+│   ├── 📁 notifications/
+│   ├── 📁 core-animation/
+│   ├── 📁 avfoundation/
+│   └── 📁 healthkit/
+│
+├── 📁 08-testing/
+│   ├── 📁 teoria/
+│   │   ├── 01-unit-testing/
+│   │   ├── 02-ui-testing/
+│   │   ├── 03-mocking/
+│   │   └── 04-tdd/
+│   │
+│   └── 📁 ejercicios/
+│
+├── 📁 09-publicacion/
+│   ├── 📁 teoria/
+│   │   ├── 01-certificates-provisioning/
+│   │   ├── 02-app-store-connect/
+│   │   ├── 03-testflight/
+│   │   ├── 04-app-review-guidelines/
+│   │   └── 05-monetizacion/
+│   │
+│   └── 📁 checklists/
+│
+├── 📁 10-proyectos-completos/
+│   ├── 📁 proyecto-1-notas/
+│   ├── 📁 proyecto-2-habitos/
+│   ├── 📁 proyecto-3-finanzas/
+│   └── 📁 proyecto-final-portfolio/
+│
+├── 📁 evaluaciones/
+│   ├── 📁 semanales/
+│   ├── 📁 por-fase/
+│   └── 📁 simulacros-entrevista/
+│
+├── 📁 recursos/
+│   ├── cheatsheets/
+│   ├── flashcards/
+│   └── referencias-rapidas/
+│
+└── 📁 scripts-claude/
+    ├── generador-ejercicios.sh
+    ├── revisor-codigo.sh
+    ├── evaluador-progreso.sh
+    └── mentor-sesion.sh
