@@ -6,7 +6,7 @@ import Cocoa
 typealias LibroID = String
 typealias UsuarioID = Int
 
-// Estructura de datos
+// Estructura de datos inicial
 var catalogo: [LibroID: (titulo: String, autor: String, genero: String)] = [
     "L001": ("1984", "George Orwell", "Ficción"),
     "L002": ("El Quijote", "Cervantes", "Clásico"),
@@ -32,112 +32,39 @@ var generosPreferidos: [UsuarioID: Set<String>] = [
     203: ["Clásico", "Historia"]
 ]
 
-// ========= FUNCIONES =========
+// ========= FUNCIONES A IMPLEMENTAR =========
 
-// 1. Listar libros disponibles
-func librosDisponibles() -> [LibroID] {
-    return catalogo.keys.filter { !prestamos.keys.contains($0) }.sorted()
-}
+// 1. librosDisponibles() -> [LibroID]
+// Retorna un array de IDs de libros que no están prestados
 
-// 2. Prestar un libro
-func prestarLibro(libroID: LibroID, usuarioID: UsuarioID) -> (Bool, String) {
-    guard catalogo[libroID] != nil else {
-        return (false, "✗ El libro no existe en el catálogo")
-    }
+// 2. prestarLibro(libroID:usuarioID:) -> (Bool, String)
+// Presta un libro si está disponible
+// Valida que el libro exista, que el usuario exista, y que el libro no esté prestado
+// Retorna (éxito, mensaje)
 
-    guard usuarios[usuarioID] != nil else {
-        return (false, "✗ El usuario no existe")
-    }
+// 3. devolverLibro(libroID:) -> (Bool, String)
+// Devuelve un libro que estaba prestado
+// Valida que el libro esté actualmente prestado
+// Retorna (éxito, mensaje)
 
-    guard prestamos[libroID] == nil else {
-        return (false, "✗ El libro ya está prestado")
-    }
+// 4. recomendarLibros(usuarioID:) -> [String]
+// Retorna títulos de libros disponibles que coincidan con los géneros preferidos del usuario
 
-    prestamos[libroID] = usuarioID
-    return (true, "✓ Libro prestado exitosamente")
-}
-
-// 3. Devolver un libro
-func devolverLibro(libroID: LibroID) -> (Bool, String) {
-    guard prestamos[libroID] != nil else {
-        return (false, "✗ El libro no está prestado")
-    }
-
-    prestamos.removeValue(forKey: libroID)
-    return (true, "✓ Libro devuelto exitosamente")
-}
-
-// 4. Recomendar libros
-func recomendarLibros(usuarioID: UsuarioID) -> [String] {
-    guard let generosUsuario = generosPreferidos[usuarioID] else {
-        return []
-    }
-
-    let disponibles = librosDisponibles()
-    var recomendaciones: [String] = []
-
-    for libroID in disponibles {
-        if let libro = catalogo[libroID] {
-            if generosUsuario.contains(libro.genero) {
-                recomendaciones.append(libro.titulo)
-            }
-        }
-    }
-
-    return recomendaciones
-}
-
-// 5. Reporte de usuario
-func reporteUsuario(usuarioID: UsuarioID) -> String {
-    guard let nombre = usuarios[usuarioID] else {
-        return "Usuario no encontrado"
-    }
-
-    var reporte = "========== REPORTE USUARIO ==========\n"
-    reporte += "Nombre: \(nombre) (ID: \(usuarioID))\n"
-
-    // Libros prestados
-    let librosPrestados = prestamos.filter { $0.value == usuarioID }.keys
-    if librosPrestados.isEmpty {
-        reporte += "Libros prestados: Ninguno\n"
-    } else {
-        reporte += "Libros prestados:\n"
-        for libroID in librosPrestados {
-            if let libro = catalogo[libroID] {
-                reporte += "  - \(libro.titulo)\n"
-            }
-        }
-    }
-
-    // Géneros preferidos
-    if let generos = generosPreferidos[usuarioID] {
-        reporte += "Géneros preferidos: \(generos.sorted().joined(separator: ", "))\n"
-    }
-
-    // Recomendaciones
-    let recomendaciones = recomendarLibros(usuarioID: usuarioID)
-    reporte += "Recomendaciones: \(recomendaciones.joined(separator: ", "))\n"
-
-    return reporte
-}
+// 5. reporteUsuario(usuarioID:) -> String
+// Genera un reporte completo del usuario con:
+// - Nombre e ID
+// - Libros que tiene prestados actualmente
+// - Géneros preferidos
+// - Recomendaciones de libros disponibles
 
 // ========= PRUEBAS =========
+// Después de implementar las funciones, pruébalas con estos casos:
 
-print("===== BIBLIOTECA SWIFT =====\n")
-
-print("Libros disponibles: \(librosDisponibles())")
-
-let (exitoPrestamo, mensajePrestamo) = prestarLibro(libroID: "L002", usuarioID: 203)
-print("\nPrestar L002 a María: \(mensajePrestamo)")
-
-let (exitoPrestamo2, mensajePrestamo2) = prestarLibro(libroID: "L001", usuarioID: 203)
-print("Prestar L001 a María: \(mensajePrestamo2)")
-
-let (exitoDevolucion, mensajeDevolucion) = devolverLibro(libroID: "L001")
-print("\nDevolver L001: \(mensajeDevolucion)")
-
-print("\nRecomendaciones para Ana (201): \(recomendarLibros(usuarioID: 201))")
-print("Recomendaciones para Carlos (202): \(recomendarLibros(usuarioID: 202))")
-
-print("\n" + reporteUsuario(usuarioID: 201))
-print("\n" + reporteUsuario(usuarioID: 202))
+// - Lista los libros disponibles
+// - Presta "L002" a María (203)
+// - Intenta prestar "L001" a María (debería fallar porque ya está prestado)
+// - Devuelve "L001"
+// - Genera recomendaciones para Ana (201)
+// - Genera recomendaciones para Carlos (202)
+// - Muestra el reporte de Ana
+// - Muestra el reporte de Carlos
